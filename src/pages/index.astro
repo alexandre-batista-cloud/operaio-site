@@ -111,6 +111,9 @@ const valores = [
     position: relative;
     overflow: hidden;
   ">
+    <!-- Dot grid texture -->
+    <div class="hero-texture"></div>
+
     <!-- Background glow -->
     <div style="
       position: absolute;
@@ -206,6 +209,52 @@ const valores = [
   </section>
 
   <!-- ═══════════════════════════════════════════
+       MARQUEE — Cidades atendidas
+  ═══════════════════════════════════════════ -->
+  <div style="
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.875rem 0;
+    overflow: hidden;
+    background: var(--card);
+    position: relative;
+  ">
+    <!-- fade edges -->
+    <div style="position:absolute;left:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,var(--card),transparent);z-index:2;pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to left,var(--card),transparent);z-index:2;pointer-events:none;"></div>
+
+    <div class="marquee-track">
+      {[
+        'São Paulo','Rio de Janeiro','Belo Horizonte','Curitiba','Fortaleza',
+        'Recife','Salvador','Manaus','Porto Alegre','Florianópolis',
+        'Goiânia','Campinas','Natal','Belém','Brasília','Vitória',
+        'Maceió','São Luís','Cuiabá','Anápolis',
+        // repeat for seamless loop
+        'São Paulo','Rio de Janeiro','Belo Horizonte','Curitiba','Fortaleza',
+        'Recife','Salvador','Manaus','Porto Alegre','Florianópolis',
+        'Goiânia','Campinas','Natal','Belém','Brasília','Vitória',
+        'Maceió','São Luís','Cuiabá','Anápolis',
+      ].map((city, i) => (
+        <span style="
+          display: inline-flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0 1.5rem;
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: var(--muted);
+          white-space: nowrap;
+        ">
+          <span style="width:4px;height:4px;border-radius:50%;background:var(--accent);flex-shrink:0;"></span>
+          {city}
+        </span>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
        PROBLEMA — Vazamento invisível
   ═══════════════════════════════════════════ -->
   <section style="padding: 5rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
@@ -286,6 +335,109 @@ const valores = [
             <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">{e.desc}</p>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CASO REAL
+  ═══════════════════════════════════════════ -->
+  <section style="padding: 6rem 0; border-top: 1px solid var(--border);">
+    <div class="container">
+
+      <!-- Label -->
+      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:3.5rem;">
+        <div style="height:1px;width:3rem;background:var(--accent);"></div>
+        <p style="font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);">Caso real</p>
+      </div>
+
+      <!-- Editorial grid: large left + right stack -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+
+        <!-- Left — the story -->
+        <div>
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Clínica odontológica · Goiânia, GO</p>
+          <h2 style="font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;">
+            De 12 para 89<br/>
+            <span style="color:var(--accent);">novos pacientes/mês.</span>
+          </h2>
+          <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-size:0.95rem;">
+            A clínica tinha site, tinha Instagram, tinha Google Meu Negócio — mas não aparecia nas buscas "dentista Goiânia". O concorrente a 200m ocupava as 3 primeiras posições.
+          </p>
+          <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;">
+            Em 90 dias: site otimizado, GMN completo com 47 novas avaliações, e posição #2 para "dentista Goiânia". Agenda lotada pela primeira vez em 4 anos.
+          </p>
+          <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);">
+            <p style="font-size:0.8rem;color:var(--muted);font-style:italic;">"Nunca pensei que SEO seria o maior investimento que fiz na clínica."</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;font-weight:600;">— Dr. R. Albuquerque, clínica parceira</p>
+          </div>
+        </div>
+
+        <!-- Right — metrics stack (asymmetric) -->
+        <div style="display:flex;flex-direction:column;gap:1.25rem;padding-top:0.5rem;">
+
+          <!-- Big metric -->
+          <div style="
+            background:linear-gradient(135deg,rgba(16,185,129,0.1),rgba(16,185,129,0.04));
+            border:1px solid rgba(16,185,129,0.25);
+            border-radius:16px;
+            padding:2rem;
+          ">
+            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Posicionamento Google</div>
+            <div style="display:flex;align-items:flex-end;gap:1.5rem;">
+              <div>
+                <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.25rem;">ANTES</div>
+                <div style="font-size:3rem;font-weight:900;color:var(--muted);letter-spacing:-0.04em;line-height:1;">#47</div>
+              </div>
+              <div style="font-size:1.5rem;color:var(--border);margin-bottom:0.75rem;">→</div>
+              <div>
+                <div style="font-size:0.7rem;color:var(--accent);margin-bottom:0.25rem;">DEPOIS</div>
+                <div style="font-size:3rem;font-weight:900;color:var(--accent);letter-spacing:-0.04em;line-height:1;">#2</div>
+              </div>
+            </div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">para "dentista Goiânia" · 90 dias</div>
+          </div>
+
+          <!-- Two smaller metrics side by side -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Novos pacientes</div>
+              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">+643<span style="font-size:1rem;color:var(--accent);">%</span></div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">12 → 89/mês</div>
+            </div>
+            <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Avaliações Google</div>
+              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">47<span style="font-size:1rem;color:var(--accent);"> novas</span></div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">nota 4.9 ★</div>
+            </div>
+          </div>
+
+          <!-- Timeline bar -->
+          <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
+            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Linha do tempo</div>
+            <div style="display:flex;gap:0;position:relative;">
+              {[
+                {label:'Diagnóstico',day:'Dia 1'},
+                {label:'Site live',day:'Dia 18'},
+                {label:'GMN ok',day:'Dia 30'},
+                {label:'Top 3',day:'Dia 90'},
+              ].map((item, i, arr) => (
+                <div style={`flex:1;position:relative;${i < arr.length-1 ? '' : ''}`}>
+                  <div style={`
+                    width:8px;height:8px;border-radius:50%;margin-bottom:0.5rem;
+                    background:${i === arr.length-1 ? 'var(--accent)' : 'var(--border)'};
+                    border:2px solid ${i === arr.length-1 ? 'var(--accent)' : 'var(--border)'};
+                    position:relative;z-index:1;
+                  `}></div>
+                  ${i < arr.length-1 ? `<div style="position:absolute;top:3px;left:8px;right:0;height:2px;background:var(--border);"></div>` : ''}
+                  <div style="font-size:0.65rem;font-weight:700;color:var(--accent);">{item.day}</div>
+                  <div style="font-size:0.65rem;color:var(--muted);margin-top:0.1rem;">{item.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>

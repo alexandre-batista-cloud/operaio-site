@@ -116,6 +116,29 @@ section { padding: 6rem 0; }
   padding: 0 1.5rem;
 }
 
+/* Hero dot grid texture */
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(16,185,129,0.18) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, black 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* Noise texture overlay */
 .noise::before {
   content: '';
