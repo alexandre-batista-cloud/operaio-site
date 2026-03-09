@@ -1,0 +1,36 @@
+---
+import Logo from './Logo.astro';
+---
+<header id="site-header" style="
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(12, 15, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+">
+  <div class="container" style="display: flex; align-items: center; justify-content: space-between; height: 68px;">
+    <a href="/" style="text-decoration: none; display: flex; align-items: center;">
+      <Logo size="sm" />
+    </a>
+
+    <nav style="display: flex; align-items: center; gap: 2rem;">
+      <a href="#servicos" style="color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Serviços</a>
+      <a href="#como-funciona" style="color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Como funciona</a>
+      <a href="https://blog.operaio.com.br" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Blog</a>
+    </nav>
+
+    <a href="#contato" class="btn-primary" style="padding: 0.55rem 1.25rem; font-size: 0.875rem;">
+      Diagnóstico gratuito →
+    </a>
+  </div>
+</header>
+
+<!-- Mobile: hide nav on small screens -->
+<style>
+  @media (max-width: 768px) {
+    nav { display: none !important; }
+  }
+</style>

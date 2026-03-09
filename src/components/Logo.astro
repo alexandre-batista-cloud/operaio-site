@@ -1,0 +1,27 @@
+---
+interface Props {
+  size?: 'sm' | 'md' | 'lg';
+}
+const { size = 'md' } = Astro.props;
+const h = size === 'sm' ? 32 : size === 'lg' ? 48 : 40;
+const w = Math.round(h * 4.2);
+---
+<svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Operaio">
+  <!-- Icon: orange square with growth bars -->
+  <rect width={h} height={h} rx={h * 0.2} fill="#f05a28"/>
+  <!-- Growth bars (3 bars, ascending right) -->
+  <rect x={h*0.18} y={h*0.55} width={h*0.14} height={h*0.32} fill="white" rx="2" opacity="0.9"/>
+  <rect x={h*0.38} y={h*0.38} width={h*0.14} height={h*0.49} fill="white" rx="2" opacity="0.95"/>
+  <rect x={h*0.58} y={h*0.18} width={h*0.14} height={h*0.69} fill="white" rx="2"/>
+  <!-- Small up-arrow on tallest bar -->
+  <!-- Wordmark -->
+  <text
+    x={h + h*0.3}
+    y={h*0.665}
+    font-family="Inter, system-ui, -apple-system, sans-serif"
+    font-weight="800"
+    font-size={h*0.52}
+    fill="#f1f5f0"
+    letter-spacing={h*0.06}
+  >OPERAIO</text>
+</svg>

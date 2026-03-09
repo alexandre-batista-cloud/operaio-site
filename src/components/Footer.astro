@@ -1,0 +1,50 @@
+---
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+<footer style="
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: 4rem 0 2rem;
+">
+  <div class="container">
+    <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem;">
+      <!-- Brand -->
+      <div>
+        <Logo size="sm" />
+        <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-top: 1.25rem; max-width: 320px;">
+          Sistema digital para negócios locais em todo o Brasil. SEO, site e operação integrados — 100% remoto.
+        </p>
+        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 1rem;">
+          ✉ <a href="mailto:contato@operaio.com.br" style="color: var(--accent); text-decoration: none;">contato@operaio.com.br</a>
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;">Serviços</h4>
+        <nav style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <a href="#servicos" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Vitrine Inteligente</a>
+          <a href="#servicos" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Landing de Conversão</a>
+          <a href="#servicos" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Site Pro</a>
+          <a href="#servicos" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Diagnóstico Raio-X</a>
+        </nav>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h4 style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem;">Empresa</h4>
+        <nav style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <a href="#como-funciona" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Como funciona</a>
+          <a href="https://blog.operaio.com.br" target="_blank" rel="noopener" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Blog</a>
+          <a href="#contato" style="color: var(--muted); text-decoration: none; font-size: 0.875rem; transition: color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Contato</a>
+        </nav>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p style="color: var(--muted); font-size: 0.8rem;">© {year} Operaio. Todos os direitos reservados.</p>
+      <p style="color: var(--muted); font-size: 0.8rem;">100% remoto · Atendemos todo o Brasil</p>
+    </div>
+  </div>
+</footer>
