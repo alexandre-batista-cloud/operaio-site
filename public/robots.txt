@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://operaio.com.br/sitemap-index.xml

@@ -10,8 +10,8 @@ interface Props {
 }
 
 const {
-  title = 'Operaio — Sistema Digital para Negócios Locais',
-  description = 'Sistema digital para negócios locais em todo o Brasil. Fazemos sua empresa aparecer no Google, converter no site e fechar mais clientes — 100% remoto.',
+  title = 'Operaio — SEO Local e Sites que Convertem em Goiânia',
+  description = 'Agência de SEO local em Goiânia-GO. Fazemos seu negócio aparecer no Google, converter no site e fechar mais clientes — 100% remoto. Diagnóstico gratuito.',
   ogImage = '/og-image.png',
 } = Astro.props;
 
@@ -27,12 +27,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
 
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
   <!-- OG -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL(ogImage, Astro.site)} />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="Operaio" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -62,7 +66,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       "addressCountry": "BR"
     },
     "telephone": "+55-62-99614-8873",
-    "openingHours": ["Mo-Fr 09:00-18:30", "Sa 09:00-14:00"],
+    "openingHours": ["Mo-Fr 09:00-19:00", "Sa 09:00-13:00"],
     "serviceType": ["SEO Local", "Desenvolvimento Web", "Marketing Digital"]
   }
   </script>
