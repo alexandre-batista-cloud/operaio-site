@@ -48,6 +48,21 @@ const pacotes = [
     cta: 'Quero converter mais',
   },
   {
+    nome: 'Tráfego Pago',
+    subtitulo: 'Visibilidade que gera venda',
+    preco: 'R$1.500',
+    recorrencia: '/mês + verba',
+    destaque: false,
+    itens: [
+      'Google Ads e Meta Ads',
+      'Segmentação local e por intenção',
+      'Remarketing e captação de leads',
+      'Relatório semanal de performance',
+      'Otimização contínua de campanhas',
+    ],
+    cta: 'Quero mais tráfego',
+  },
+  {
     nome: 'Site Authority',
     subtitulo: 'Autoridade total no digital',
     preco: 'R$7.000',
@@ -84,17 +99,17 @@ const etapas = [
 
 const valores = [
   {
-    icone: '◈',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>`,
     titulo: 'Integridade',
     desc: 'Dizemos o que é possível, entregamos o que prometemos. Sem métricas de vaidade, sem relatórios vazios.',
   },
   {
-    icone: '◎',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
     titulo: 'Responsabilidade',
     desc: 'Seu resultado é nossa responsabilidade. Não desaparecemos após o setup — acompanhamos cada etapa.',
   },
   {
-    icone: '◆',
+    svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
     titulo: 'Visão de resultado',
     desc: 'Cada decisão técnica existe para gerar negócio. SEO, site e conteúdo como sistema de vendas, não como custo.',
   },
@@ -106,7 +121,7 @@ const valores = [
   <!-- ═══════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════ -->
-  <section style="
+  <section class="dobra-hero" style="
     padding: 7rem 0 5rem;
     position: relative;
     overflow: hidden;
@@ -147,7 +162,7 @@ const valores = [
         margin-bottom: 2rem;
       ">
         <span style="width: 6px; height: 6px; background: var(--accent); border-radius: 50%; display: inline-block; animation: pulse 2s infinite;"></span>
-        <span style="color: var(--accent); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;">SISTEMA DIGITAL PARA NEGÓCIOS LOCAIS · BRASIL</span>
+        <span style="color: var(--accent); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em;">GOIÂNIA · ANÁPOLIS · REGIÃO — SEO LOCAL E CONVERSÃO</span>
       </div>
 
       <!-- Headline -->
@@ -159,8 +174,8 @@ const valores = [
         max-width: 800px;
         margin-bottom: 1.75rem;
       ">
-        Negócios locais que<br/>
-        <span style="color: var(--accent);">vendem de verdade.</span>
+        Seu negócio <span style="color: var(--accent);">aparece no Google</span><br/>
+        e fecha mais clientes.
       </h1>
 
       <p style="
@@ -184,7 +199,7 @@ const valores = [
       </div>
 
       <!-- Stats strip -->
-      <div style="
+      <div class="hero-stats" style="
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 0;
@@ -193,6 +208,7 @@ const valores = [
         border-radius: 12px;
         overflow: hidden;
         background: var(--card);
+        margin-bottom: 3rem;
       ">
         {[
           { num: '+40%', label: 'Mais cliques no Google' },
@@ -204,6 +220,46 @@ const valores = [
             <div style="font-size: 0.75rem; color: var(--muted); margin-top: 0.25rem;">{s.label}</div>
           </div>
         ))}
+      </div>
+
+      <!-- Step strip — padrão HMetrix -->
+      <div class="hero-steps-strip" style="max-width: 640px; position: relative;">
+        <!-- connecting line -->
+        <div style="
+          position: absolute;
+          top: 14px;
+          left: calc(14px + 33.333% / 2);
+          right: calc(14px + 33.333% / 2);
+          height: 2px;
+          background: var(--border);
+          z-index: 0;
+        "></div>
+        <div style="display: flex; align-items: flex-start; gap: 0;">
+          {[
+            { num: '1', titulo: 'Diagnóstico', desc: '30 min · resultado concreto' },
+            { num: '2', titulo: 'Sistema montado', desc: 'SEO, site e GMN integrados' },
+            { num: '3', titulo: 'Resultado real', desc: 'Mais cliques, mais vendas' },
+          ].map((step) => (
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1;">
+              <div style="
+                width: 28px;
+                height: 28px;
+                border-radius: 50%;
+                background: var(--accent);
+                color: var(--bg);
+                font-size: 0.72rem;
+                font-weight: 800;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 0.65rem;
+                flex-shrink: 0;
+              ">{step.num}</div>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem;">{step.titulo}</div>
+              <div style="font-size: 0.7rem; color: var(--muted); line-height: 1.4;">{step.desc}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -225,15 +281,15 @@ const valores = [
 
     <div class="marquee-track">
       {[
-        'São Paulo','Rio de Janeiro','Belo Horizonte','Curitiba','Fortaleza',
-        'Recife','Salvador','Manaus','Porto Alegre','Florianópolis',
-        'Goiânia','Campinas','Natal','Belém','Brasília','Vitória',
-        'Maceió','São Luís','Cuiabá','Anápolis',
+        'Goiânia','Anápolis','Aparecida de Goiânia','Senador Canedo','Trindade',
+        'Goianira','Nerópolis','Inhumas','Jaraguá','Pirenópolis',
+        'Hidrolândia','Goianápolis','Leopoldo de Bulhões','Alexânia','Silvânia',
+        'Campo Limpo de Goiás','Itaberaí','Ceres','Ouro Verde de Goiás','Uruana',
         // repeat for seamless loop
-        'São Paulo','Rio de Janeiro','Belo Horizonte','Curitiba','Fortaleza',
-        'Recife','Salvador','Manaus','Porto Alegre','Florianópolis',
-        'Goiânia','Campinas','Natal','Belém','Brasília','Vitória',
-        'Maceió','São Luís','Cuiabá','Anápolis',
+        'Goiânia','Anápolis','Aparecida de Goiânia','Senador Canedo','Trindade',
+        'Goianira','Nerópolis','Inhumas','Jaraguá','Pirenópolis',
+        'Hidrolândia','Goianápolis','Leopoldo de Bulhões','Alexânia','Silvânia',
+        'Campo Limpo de Goiás','Itaberaí','Ceres','Ouro Verde de Goiás','Uruana',
       ].map((city, i) => (
         <span style="
           display: inline-flex;
@@ -257,7 +313,7 @@ const valores = [
   <!-- ═══════════════════════════════════════════
        PROBLEMA — Vazamento invisível
   ═══════════════════════════════════════════ -->
-  <section style="padding: 5rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <section class="dobra-problema" style="padding: 5rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container" style="text-align: center;">
       <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">O problema</p>
       <h2 style="font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; max-width: 700px; margin: 0 auto 1.5rem;">
@@ -267,12 +323,24 @@ const valores = [
         De Belém a Porto Alegre, negócios locais perdem clientes todo dia para quem aparece antes no Google. O problema não é falta de produto — é invisibilidade digital.
       </p>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; max-width: 800px; margin: 0 auto;">
+      <div class="problema-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin: 0 auto;">
         {[
-          { icon: '⚡', texto: 'Site lento ou sem mobile' },
-          { icon: '📍', texto: 'Google Meu Negócio desatualizado' },
-          { icon: '🔍', texto: 'Não aparece nas buscas locais' },
-          { icon: '📉', texto: 'Site que não converte visitantes' },
+          {
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+            texto: 'Site lento ou sem mobile',
+          },
+          {
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+            texto: 'Google Meu Negócio desatualizado',
+          },
+          {
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+            texto: 'Não aparece nas buscas locais',
+          },
+          {
+            svg: `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>`,
+            texto: 'Site que não converte visitantes',
+          },
         ].map(item => (
           <div style="
             padding: 1.25rem 1.5rem;
@@ -283,7 +351,7 @@ const valores = [
             align-items: center;
             gap: 0.75rem;
           ">
-            <span style="font-size: 1.25rem;">{item.icon}</span>
+            <span style="color: var(--accent); flex-shrink: 0; display: flex;" set:html={item.svg} />
             <span style="font-size: 0.875rem; color: var(--muted); text-align: left;">{item.texto}</span>
           </div>
         ))}
@@ -292,49 +360,46 @@ const valores = [
   </section>
 
   <!-- ═══════════════════════════════════════════
-       COMO FUNCIONA
+       COMO FUNCIONA — padrão HMetrix horizontal
   ═══════════════════════════════════════════ -->
-  <section id="como-funciona" style="padding: 6rem 0;">
+  <section id="como-funciona" style="padding: 6rem 0; background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
     <div class="container">
       <div style="text-align: center; margin-bottom: 4rem;">
         <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">Processo</p>
         <h2 style="font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800;">
-          Como funciona
+          Você no controle do seu <span style="color: var(--accent);">crescimento digital</span>
         </h2>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-        {etapas.map((e) => (
-          <div class="card" style="padding: 2rem; position: relative; overflow: hidden;">
-            <div style="
-              position: absolute;
-              top: 1.5rem;
-              right: 1.5rem;
-              font-size: 3rem;
-              font-weight: 900;
-              color: var(--border);
-              line-height: 1;
-              letter-spacing: -0.05em;
-              font-family: 'Inter', monospace;
-            ">{e.num}</div>
-            <div style="
-              width: 3rem;
-              height: 3rem;
-              background: rgba(16,185,129,0.1);
-              border: 1px solid rgba(16,185,129,0.2);
-              border-radius: 10px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin-bottom: 1.25rem;
-              font-size: 1.25rem;
-              font-weight: 900;
-              color: var(--accent);
-            ">{e.num.replace('0','')}</div>
-            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem;">{e.titulo}</h3>
-            <p style="color: var(--muted); font-size: 0.9rem; line-height: 1.7;">{e.desc}</p>
-          </div>
-        ))}
+      <!-- Horizontal connected steps — HMetrix pattern -->
+      <div style="position: relative; max-width: 860px; margin: 0 auto;">
+        <!-- connecting line desktop -->
+        <div class="steps-line"></div>
+
+        <div class="steps-h-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {etapas.map((e, i) => (
+            <div style="display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1;">
+              <!-- Circle -->
+              <div style={`
+                width: 52px;
+                height: 52px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                font-weight: 900;
+                margin-bottom: 1.25rem;
+                flex-shrink: 0;
+                ${i === 2
+                  ? 'background: var(--accent); color: var(--bg); box-shadow: 0 0 24px rgba(16,185,129,0.35);'
+                  : 'background: var(--bg); color: var(--accent); border: 2px solid rgba(16,185,129,0.4);'}
+              `}>{e.num.replace('0','')}</div>
+              <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.65rem;">{e.titulo}</h3>
+              <p style="color: var(--muted); font-size: 0.875rem; line-height: 1.7;">{e.desc}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -342,7 +407,7 @@ const valores = [
   <!-- ═══════════════════════════════════════════
        CASO REAL
   ═══════════════════════════════════════════ -->
-  <section style="padding: 6rem 0; border-top: 1px solid var(--border);">
+  <section class="dobra-caso-real" style="padding: 6rem 0; border-top: 1px solid var(--border);">
     <div class="container">
 
       <!-- Label -->
@@ -352,24 +417,24 @@ const valores = [
       </div>
 
       <!-- Editorial grid: large left + right stack -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
+      <div class="grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;">
 
         <!-- Left — the story -->
         <div>
-          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Clínica odontológica · Goiânia, GO</p>
+          <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">Franquia de colchões · Anápolis, GO</p>
           <h2 style="font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;">
-            De 12 para 89<br/>
-            <span style="color:var(--accent);">novos pacientes/mês.</span>
+            De R$60k/mês para<br/>
+            <span style="color:var(--accent);">R$600k em uma Black Friday.</span>
           </h2>
           <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-size:0.95rem;">
-            A clínica tinha site, tinha Instagram, tinha Google Meu Negócio — mas não aparecia nas buscas "dentista Goiânia". O concorrente a 200m ocupava as 3 primeiras posições.
+            A franquia vendia bem — mas dependia do fluxo da loja física. Presença digital quase zero, sem tráfego orgânico, sem estratégia de data comemorativa. O concorrente online crescia enquanto a loja esperava o cliente entrar.
           </p>
           <p style="color:var(--muted);line-height:1.8;font-size:0.95rem;">
-            Em 90 dias: site otimizado, GMN completo com 47 novas avaliações, e posição #2 para "dentista Goiânia". Agenda lotada pela primeira vez em 4 anos.
+            Implementamos SEO local, reestruturamos o Google Meu Negócio e montamos uma estratégia de conteúdo e tráfego focada em datas-chave. Na primeira Black Friday com o sistema rodando: R$600k — dez vezes o faturamento mensal anterior. Em 3 anos: R$5 milhões acumulados.
           </p>
           <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border);">
-            <p style="font-size:0.8rem;color:var(--muted);font-style:italic;">"Nunca pensei que SEO seria o maior investimento que fiz na clínica."</p>
-            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.5rem;font-weight:600;">— Dr. R. Albuquerque, clínica parceira</p>
+            <p style="font-size:1rem;color:var(--text);font-style:italic;line-height:1.7;">"Eu tratava marketing como custo. Depois desse resultado, passei a tratar como o único investimento que realmente escala o negócio."</p>
+            <p style="font-size:0.8rem;color:var(--muted);margin-top:0.75rem;font-weight:600;">— Valkiria, franqueada · Anápolis, GO</p>
           </div>
         </div>
 
@@ -383,32 +448,32 @@ const valores = [
             border-radius:16px;
             padding:2rem;
           ">
-            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Posicionamento Google</div>
+            <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:0.75rem;">Faturamento — Black Friday</div>
             <div style="display:flex;align-items:flex-end;gap:1.5rem;">
               <div>
-                <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.25rem;">ANTES</div>
-                <div style="font-size:3rem;font-weight:900;color:var(--muted);letter-spacing:-0.04em;line-height:1;">#47</div>
+                <div style="font-size:0.7rem;color:var(--muted);margin-bottom:0.25rem;">ANTES (mês)</div>
+                <div class="metric-number" style="font-size:2.25rem;font-weight:900;color:var(--muted);letter-spacing:-0.04em;line-height:1;">R$60k</div>
               </div>
               <div style="font-size:1.5rem;color:var(--border);margin-bottom:0.75rem;">→</div>
               <div>
-                <div style="font-size:0.7rem;color:var(--accent);margin-bottom:0.25rem;">DEPOIS</div>
-                <div style="font-size:3rem;font-weight:900;color:var(--accent);letter-spacing:-0.04em;line-height:1;">#2</div>
+                <div style="font-size:0.7rem;color:var(--accent);margin-bottom:0.25rem;">1ª BLACK FRIDAY</div>
+                <div class="metric-glow" style="font-size:2.25rem;font-weight:900;color:var(--accent);letter-spacing:-0.04em;line-height:1;">R$600k</div>
               </div>
             </div>
-            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">para "dentista Goiânia" · 90 dias</div>
+            <div style="font-size:0.75rem;color:var(--muted);margin-top:0.75rem;">10× o faturamento mensal · em um único final de semana</div>
           </div>
 
           <!-- Two smaller metrics side by side -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
             <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Novos pacientes</div>
-              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">+643<span style="font-size:1rem;color:var(--accent);">%</span></div>
-              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">12 → 89/mês</div>
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Acumulado 3 anos</div>
+              <div class="metric-number" style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;animation-delay:0.15s;">R$5<span style="font-size:1rem;color:var(--accent);">M</span></div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">vs R$600k no período anterior</div>
             </div>
             <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;">
-              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Avaliações Google</div>
-              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;">47<span style="font-size:1rem;color:var(--accent);"> novas</span></div>
-              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">nota 4.9 ★</div>
+              <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Crescimento total</div>
+              <div class="metric-number" style="font-size:2rem;font-weight:900;letter-spacing:-0.03em;animation-delay:0.3s;">+733<span style="font-size:1rem;color:var(--accent);">%</span></div>
+              <div style="font-size:0.72rem;color:var(--muted);margin-top:0.25rem;">em receita nos 3 anos</div>
             </div>
           </div>
 
@@ -417,10 +482,10 @@ const valores = [
             <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">Linha do tempo</div>
             <div style="display:flex;gap:0;position:relative;">
               {[
-                {label:'Diagnóstico',day:'Dia 1'},
-                {label:'Site live',day:'Dia 18'},
-                {label:'GMN ok',day:'Dia 30'},
-                {label:'Top 3',day:'Dia 90'},
+                {label:'Diagnóstico',day:'Mês 1'},
+                {label:'SEO + GMN',day:'Mês 2'},
+                {label:'Tráfego pago',day:'Mês 3'},
+                {label:'R$600k BF',day:'Mês 5'},
               ].map((item, i, arr) => (
                 <div style={`flex:1;position:relative;${i < arr.length-1 ? '' : ''}`}>
                   <div style={`
@@ -429,7 +494,7 @@ const valores = [
                     border:2px solid ${i === arr.length-1 ? 'var(--accent)' : 'var(--border)'};
                     position:relative;z-index:1;
                   `}></div>
-                  ${i < arr.length-1 ? `<div style="position:absolute;top:3px;left:8px;right:0;height:2px;background:var(--border);"></div>` : ''}
+                  {i < arr.length-1 && <div style="position:absolute;top:3px;left:8px;right:0;height:2px;background:var(--border);"></div>}
                   <div style="font-size:0.65rem;font-weight:700;color:var(--accent);">{item.day}</div>
                   <div style="font-size:0.65rem;color:var(--muted);margin-top:0.1rem;">{item.label}</div>
                 </div>
@@ -457,7 +522,7 @@ const valores = [
         </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
+      <div class="pacotes-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
         {pacotes.map((p) => (
           <div style={`
             background: ${p.destaque ? 'linear-gradient(135deg, rgba(16,185,129,0.12), rgba(16,185,129,0.05))' : 'var(--bg)'};
@@ -535,23 +600,63 @@ const valores = [
   ═══════════════════════════════════════════ -->
   <section id="sobre" style="padding: 6rem 0;">
     <div class="container">
-      <div style="
+      <div class="grid-2col" style="
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
         align-items: center;
       ">
         <div>
-          <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">Nossa base</p>
+          <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">Quem está por trás</p>
           <h2 style="font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2;">
-            Resultado real,<br/>entregue com responsabilidade.
+            Construído por quem<br/>já esteve do seu lado.
           </h2>
           <p style="color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem;">
-            Existem 19 milhões de negócios locais no Brasil. A maioria é invisível no Google. Operaio nasceu para mudar isso — de forma escalável, acessível e com resultado medido.
+            A Operaio foi fundada por Alexandre Batista — empresário, especialista em marketing digital com especializações no MIT em analytics e SEO avançado. Antes de criar sistemas para outros negócios, viveu na pele o que é depender de fluxo físico enquanto o digital ficava para amanhã.
           </p>
-          <p style="color: var(--muted); line-height: 1.8;">
-            Montamos sistemas digitais que funcionam como extensão da operação: aparecem quando o cliente busca, convencem quando chegam, convertem quando é a hora certa. Em qualquer cidade do país.
+          <p style="color: var(--muted); line-height: 1.8; margin-bottom: 2rem;">
+            São 19 milhões de negócios locais no Brasil. A maioria é invisível no Google — não por falta de produto, mas por falta de sistema. A Operaio existe para fechar essa lacuna: com método, velocidade e resultado que aparece nos números, não em relatórios bonitos.
           </p>
+
+          <!-- Credenciais -->
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;">
+
+            <!-- Badge MIT destacado -->
+            <span style="
+              display:inline-flex;
+              align-items:center;
+              gap:0.45rem;
+              font-size:0.78rem;
+              font-weight:700;
+              color:#f59e0b;
+              background:rgba(245,158,11,0.1);
+              border:1px solid rgba(245,158,11,0.35);
+              padding:0.35rem 0.9rem;
+              border-radius:100px;
+              letter-spacing:0.03em;
+            ">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              MIT — Marketing Analytics
+            </span>
+
+            {[
+              'SEO Avançado',
+              'Google Analytics 4',
+              'Empresário com operação real',
+              'Orientado a resultado rápido',
+            ].map(tag => (
+              <span style="
+                font-size:0.75rem;
+                font-weight:600;
+                color:var(--accent);
+                background:rgba(16,185,129,0.08);
+                border:1px solid rgba(16,185,129,0.2);
+                padding:0.3rem 0.75rem;
+                border-radius:100px;
+                letter-spacing:0.02em;
+              ">{tag}</span>
+            ))}
+          </div>
         </div>
 
         <div style="display: flex; flex-direction: column; gap: 1.5rem;">
@@ -569,7 +674,7 @@ const valores = [
                 font-size: 1rem;
                 color: var(--accent);
                 flex-shrink: 0;
-              ">{v.icone}</div>
+              "><span set:html={v.svg} /></div>
               <div>
                 <h4 style="font-weight: 700; margin-bottom: 0.35rem;">{v.titulo}</h4>
                 <p style="color: var(--muted); font-size: 0.875rem; line-height: 1.65;">{v.desc}</p>
@@ -584,7 +689,7 @@ const valores = [
   <!-- ═══════════════════════════════════════════
        BLOG STRIP
   ═══════════════════════════════════════════ -->
-  <section style="
+  <section class="dobra-blog" style="
     padding: 4rem 0;
     background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
     border-top: 1px solid var(--border);
@@ -609,16 +714,57 @@ const valores = [
   </section>
 
   <!-- ═══════════════════════════════════════════
-       CONTATO / CTA FINAL
+       CTA BLOCK — padrão HMetrix full-width teal
+  ═══════════════════════════════════════════ -->
+  <section class="dobra-cta" style="
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #065f46 0%, #047857 50%, #064e3b 100%);
+    position: relative;
+    overflow: hidden;
+  ">
+    <div style="
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    "></div>
+    <div class="container" style="position: relative; z-index: 1; text-align: center;">
+      <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 0.75rem;">COMECE AGORA</p>
+      <h2 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; color: #fff; margin-bottom: 0.75rem;">
+        O primeiro passo para uma grande transformação
+      </h2>
+      <p style="color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 2rem;">Diagnóstico gratuito · 30 minutos · resultado concreto</p>
+      <a href="#contato" style="
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #fff;
+        color: #065f46;
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 0.875rem 2.25rem;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: all 0.2s;
+        letter-spacing: 0.01em;
+      ">
+        Quero meu diagnóstico gratuito →
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CONTATO / FORMULÁRIO
   ═══════════════════════════════════════════ -->
   <section id="contato" style="padding: 7rem 0;">
     <div class="container" style="text-align: center; max-width: 640px; margin: 0 auto;">
-      <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">Comece agora</p>
+      <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem;">Diagnóstico</p>
       <h2 style="font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.15;">
-        Diagnóstico gratuito.<br/>Resultado em 30 minutos.
+        Diagnóstico gratuito.<br/>Resultado em <span style="color: var(--accent);">30 minutos.</span>
       </h2>
       <p style="color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 3rem;">
-        100% remoto. Não importa se você está em São Paulo, Fortaleza, Cuiabá ou qualquer outra cidade — analisamos seu negócio e mostramos exatamente onde você está perdendo clientes. Sem compromisso.
+        Atendemos negócios em Goiânia, Anápolis e toda a região — 100% remoto, sem deslocamento, sem burocracia. Em 30 minutos você sabe exatamente onde está perdendo clientes. Sem compromisso.
       </p>
 
       <!-- Contact form -->
@@ -626,6 +772,7 @@ const valores = [
         name="contato"
         method="POST"
         action="mailto:contato@operaio.com.br"
+        class="contact-form"
         style="
           background: var(--card);
           border: 1px solid var(--border);
@@ -750,15 +897,152 @@ const valores = [
 </Layout>
 
 <style>
+  /* ============================================================
+     DOBRAS MAP — referência rápida para edições futuras
+     D0  Header         sticky nav          → Header.astro
+     D1  Hero           .dobra-hero         → L109-250
+     D2  Marquee        .dobra-marquee      → L255-296
+     D3  Problema       .dobra-problema     → L301-345
+     D4  Processo       #como-funciona      → L350-390
+     D5  Caso Real      .dobra-caso-real    → L395-493
+     D6  Serviços       #servicos           → L498-581
+     D7  Founder        #sobre              → L586-672
+     D8  Blog           .dobra-blog         → L677-699
+     D9  CTA            .dobra-cta          → L704-740
+     D10 Contato        #contato            → L745-878
+     D11 Footer         Footer.astro
+     ============================================================ */
+
+  /* === ANIMAÇÃO BADGE HERO === */
   @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.4; }
   }
 
+  /* === CONNECTING LINE — D4 Processo === */
+  .steps-line {
+    position: absolute;
+    top: 25px;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+
+  /* ============================================================
+     RESPONSIVIDADE — Tablet (≤1024px)
+     ============================================================ */
+  @media (max-width: 1024px) {
+    /* D1 Hero — reduz padding topo */
+    .dobra-hero { padding: 5.5rem 0 4rem !important; }
+
+    /* D3 Problema — 2×2 em tablet */
+    .problema-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* D6 Pacotes — 2×2 em tablet */
+    .pacotes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* D7 Founder — gap menor em tablet */
+    #sobre .grid-2col { gap: 3rem !important; }
+  }
+
+  /* ============================================================
+     RESPONSIVIDADE — Mobile (≤768px)
+     ============================================================ */
   @media (max-width: 768px) {
+    /* D1 Hero */
+    .dobra-hero { padding: 4rem 0 2.5rem !important; }
+
+    /* D3 Problema */
+    .dobra-problema { padding: 3rem 0 !important; }
+    .problema-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* D6 Pacotes */
+    .pacotes-grid { grid-template-columns: repeat(1, 1fr) !important; }
+
+    /* D4 Processo */
+    #como-funciona { padding: 3rem 0 !important; }
+    .steps-line { display: none !important; }
+    .steps-h-grid {
+      grid-template-columns: 1fr !important;
+      gap: 2rem !important;
+      max-width: 280px !important;
+      margin: 0 auto !important;
+    }
+    /* No mobile steps ficam alinhados à esquerda */
+    .steps-h-grid > div {
+      align-items: flex-start !important;
+      text-align: left !important;
+    }
+
+    /* D5 Caso Real */
+    .dobra-caso-real { padding: 3rem 0 !important; }
+    /* Fix grid child overflow (min-width:auto default) */
+    .dobra-caso-real .grid-2col > div { min-width: 0; }
+    /* Metric comparison row: wrap on small screens */
+    .dobra-caso-real [style*="align-items:flex-end"] {
+      flex-wrap: wrap !important;
+      gap: 0.75rem !important;
+    }
+
+    /* D6 Serviços */
+    #servicos { padding: 3rem 0 !important; }
+
+    /* D7 Founder */
+    #sobre { padding: 3rem 0 !important; }
+    #sobre .grid-2col { gap: 2.5rem !important; }
+
+    /* D8 Blog */
+    .dobra-blog { padding: 2.5rem 0 !important; }
+
+    /* D9 CTA */
+    .dobra-cta { padding: 3rem 0 !important; }
+
+    /* D10 Contato */
+    #contato { padding: 3.5rem 0 !important; }
+    .contact-form { padding: 1.5rem !important; }
+
+    /* Grids 2col → empilha */
+    .grid-2col {
+      grid-template-columns: 1fr !important;
+      gap: 2.5rem !important;
+    }
+    /* Prevent grid children from overflowing their cells */
+    .grid-2col > * { min-width: 0; }
+
+    /* Seletor genérico fallback para grids inline */
     section > .container > div[style*="grid-template-columns: 1fr 1fr"] {
       grid-template-columns: 1fr !important;
-      gap: 3rem !important;
+      gap: 2.5rem !important;
+    }
+
+    /* Hero step strip: padding menor */
+    .hero-steps-strip { max-width: 100% !important; }
+
+    /* Stats strip: full width mobile */
+    .hero-stats { max-width: 100% !important; }
+  }
+
+  /* ============================================================
+     RESPONSIVIDADE — Small mobile (≤480px)
+     ============================================================ */
+  @media (max-width: 480px) {
+    /* Hero step strip: ocultar em telas muito pequenas
+       (o processo está coberto pela D4) */
+    .hero-steps-strip { display: none !important; }
+
+    /* Metrics grid 2col → 1col */
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Form padding mínimo */
+    .contact-form { padding: 1.25rem !important; }
+
+    /* CTA block texto menor */
+    .dobra-cta h2 {
+      font-size: clamp(1.25rem, 5vw, 1.75rem) !important;
     }
   }
 </style>
