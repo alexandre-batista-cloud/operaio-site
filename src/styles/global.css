@@ -12,6 +12,7 @@
   --muted: #6b7280;
   --border: #1e2d2a;
   --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', system-ui, sans-serif;
 }
 
 * {
@@ -33,6 +34,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--bg);
@@ -48,6 +53,24 @@ body {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.15;
   letter-spacing: -0.02em;
+  font-family: var(--font-display);
+}
+
+/* Metric animations */
+@keyframes metric-reveal {
+  from { opacity: 0; transform: translateY(10px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes metric-glow {
+  0%, 100% { text-shadow: 0 0 24px rgba(16,185,129,0.25); }
+  50%       { text-shadow: 0 0 48px rgba(16,185,129,0.55); }
+}
+.metric-number {
+  animation: metric-reveal 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+.metric-glow {
+  animation: metric-reveal 0.7s cubic-bezier(0.16,1,0.3,1) both,
+             metric-glow 3s ease-in-out 0.7s infinite;
 }
 
 /* Utilities */
@@ -114,6 +137,29 @@ section { padding: 6rem 0; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+/* Hero dot grid texture */
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(16,185,129,0.18) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 70% 40%, black 0%, transparent 80%);
+  pointer-events: none;
+}
+
+/* Marquee */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* Noise texture overlay */
